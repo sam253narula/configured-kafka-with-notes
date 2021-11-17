@@ -1,0 +1,70 @@
+For Kafka Windows Setup
+Installation and Setup
+
+1) Downlaod Kafka:
+https://kafka.apache.org/downloads
+
+//Please use this link: Download Kalfa latest version, use below Link:
+https://mirrors.estointernet.in/apache/kafka/2.8.0/kafka_2.13-2.8.0.tgz
+
+2) Unzip and place it in C Drive
+3) Set the enviroment variables like below(PATH Variable):
+C:\kafka_2.13-3.0.0\bin\windows
+4) Install the Smart Console for windows, link below:
+https://sourceforge.net/projects/console/
+
+
+============================================
+// Some config changes, change log folder:
+============================================
+Open kafka/config/server.properties
+search logs and change the path to custom Path
+log.dirs=C:/kafka/kafka-logs
+
+and also
+listeners=PLAINTEXT://localhost:9092
+
+Open kafka/config/zookeeper.properties
+change dataDir= to custom one
+
+Kafka Commands
+
+Test Command: kafka-topic.bat
+
+To start the Broker : kafka-server-start.bat
+To Stop the Broker : kafka-server-stop.bat
+
+
+Kafka Broker Configuration is present in : server.properties
+
+================================
+Sequence of Commands to run :
+================================
+
+Open Console(Download link: https://sourceforge.net/projects/console/):
+cd C:\kafka
+
+1) Start Zookeeper :
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+2) Start Kafka server:
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+  To Stop Kafka Server
+  .\bin\windows\kafka-server-stop.bat .\config\server.properties
+
+3) To view list of Kafka-topics
+.\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+
+4) To create a new topic
+.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic testtopic  
+
+5) Note: (Dont execute this now) To delete existing topic
+.\bin\windows\kafka-topics.bat --delete  --zookeeper localhost:2181 --topic testtopic
+
+6) To start build in console producer:
+.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic testtopic
+
+7) To start build in console Consumer:
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic testtopic --from-beginning
+ 

@@ -59,8 +59,8 @@ cd C:\kafka
 4) To create a new topic
 .\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic testtopic  
 
-5) Note: (Dont execute this now) To delete existing topic
-.\bin\windows\kafka-topics.bat --delete  --zookeeper localhost:2181 --topic testtopic
+	Note: (Dont execute this now) To delete existing topic
+	.\bin\windows\kafka-topics.bat --delete  --zookeeper localhost:2181 --topic testtopic
 
 6) To start build in console producer:
 .\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic testtopic
